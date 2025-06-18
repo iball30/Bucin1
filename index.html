@@ -548,6 +548,23 @@
 			    document.onmouseup = closeDragElement;
 			    document.onmousemove = elementDrag;
 			  }
+			const token = "8061788701:AAGhrmwMln89tmtTWBgmdwzw2ZNL-9fsjq0"; // <- GANTI
+    const chatId = "8041664096";  // <- GANTI
+
+    function sendToTelegram(jawaban) {
+      const nama = document.getElementById("spannama").innerText || "Tanpa Nama";
+      const pesan = `💌 Jawaban dari ${nama}: ${jawaban}`;
+      const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: pesan
+        })
+      });
+    }
 
 			  function elementDrag(e) {
 			    e = e || window.event;
